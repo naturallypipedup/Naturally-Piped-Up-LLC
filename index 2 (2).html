@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Naturally Piped Up - Tropical Mobile Cocktail Paradise</title>
+    <meta name="description" content="Premium tropical cocktails delivered to your door. $20 per bottle, 6 shots of paradise. Serving Baltimore Metro. Order now!">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --tropical-pink: #FF6B9D;
+            --tropical-orange: #FF8C42;
+            --tropical-yellow: #FFD93D;
+            --tropical-green: #6BCF7F;
+            --tropical-blue: #4ECDC4;
+            --tropical-purple: #A78BFA;
+            --deep-blue: #0F2557;
+            --sand: #FFF8E7;
+            --white: #FFFFFF;
+            --shadow: rgba(0, 0, 0, 0.15);
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            color: var(--deep-blue);
+            background: linear-gradient(135deg, #FFE5EC 0%, #FFF8E7 50%, #E0F7FA 100%);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .floating-emoji {
+            position: absolute;
+            font-size: 3rem;
+            opacity: 0.15;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .floating-emoji:nth-child(1) { left: 10%; top: 20%; animation-delay: 0s; }
+        .floating-emoji:nth-child(2) { left: 80%; top: 10%; animation-delay: 3s; }
+        .floating-emoji:nth-child(3) { left: 60%; top: 60%; animation-delay: 6s; }
+        .floating-emoji:nth-child(4) { left: 30%; top: 70%; animation-delay: 9s; }
+        .floating-emoji:nth-child(5) { left: 90%; top: 50%; animation-delay: 12s; }
+        .floating-emoji:nth-child(6) { left: 20%; top: 40%; animation-delay: 15s; }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(30px, -30px) rotate(5deg); }
+            50% { transform: translate(-20px, 20px) rotate(-5deg); }
+            75% { transform: translate(20px, 10px) rotate(3deg); }
+        }
+
+        /* Header */
+        header {
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px var(--shadow);
+            z-index: 1000;
+            animation: slideDown 0.6s ease-out;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-100%); }
+            to { transform: translateY(0); }
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-family: 'Righteous', cursive;
+            font-size: 1.8rem;
+            background: linear-gradient(135deg, var(--tropical-pink), var(--tropical-orange), var(--tropical-yellow));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 3s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { filter: hue-rotate(0deg); }
+            50% { filter: hue-rotate(20deg); }
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--deep-blue);
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--tropical-pink), var(--tropical-orange));
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-family: 'Righteous', cursive;
+            font-size: clamp(3rem, 8vw, 6rem);
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--tropical-pink), var(--tropical-orange), var(--tropical-yellow), var(--tropical-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 1s ease-out 0.2s backwards;
+        }
+
+        .hero .subtitle {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            font-weight: 300;
+            margin-bottom: 2rem;
+            color: var(--deep-blue);
+            animation: fadeInUp 1s ease-out 0.4s backwards;
+        }
+
+        .hero .price-highlight {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            color: var(--tropical-pink);
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease-out 0.6s backwards;
+        }
+
+        .hero .features {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease-out 0.8s backwards;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-decoration: none;
+            color: white;
+            background: linear-gradient(135deg, var(--tropical-pink), var(--tropical-orange));
+            border-radius: 50px;
+            box-shadow: 0 8px 30px rgba(255, 107, 157, 0.4);
+            transition: all 0.3s ease;
+            animation: fadeInUp 1s ease-out 1s backwards, pulse 2s ease-in-out infinite;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(255, 107, 157, 0.6);
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        /* Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        /* Section Styles */
+        section {
+            margin-bottom: 6rem;
+        }
+
+        .section-title {
+            font-family: 'Righteous', cursive;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            text-align: center;
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, var(--tropical-blue), var(--tropical-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Menu Grid */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .drink-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px var(--shadow);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .drink-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--tropical-pink), var(--tropical-orange), var(--tropical-yellow));
+        }
+
+        .drink-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+        }
+
+        .drink-emoji {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .drink-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--deep-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .drink-spirit {
+            font-size: 0.9rem;
+            color: var(--tropical-purple);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .drink-description {
+            color: #666;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .drink-price {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--tropical-pink);
+        }
+
+        /* Pricing Cards */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .pricing-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            text-align: center;
+            box-shadow: 0 10px 30px var(--shadow);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .pricing-card:hover {
+            transform: scale(1.05);
+        }
+
+        .pricing-card.featured {
+            background: linear-gradient(135deg, var(--tropical-pink), var(--tropical-orange));
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .pricing-card.featured .price {
+            color: white;
+        }
+
+        .pricing-card.featured .feature-list li {
+            color: white;
+        }
+
+        .pricing-title {
+            font-family: 'Righteous', cursive;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .price {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--tropical-pink);
+            margin-bottom: 0.5rem;
+        }
+
+        .price-note {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-bottom: 2rem;
+        }
+
+        .feature-list {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 2rem;
+        }
+
+        .feature-list li {
+            padding: 0.5rem 0;
+            color: #666;
+        }
+
+        .feature-list li::before {
+            content: '🌴 ';
+            margin-right: 0.5rem;
+        }
+
+        /* Order Form */
+        .order-form {
+            background: white;
+            border-radius: 30px;
+            padding: 3rem;
+            box-shadow: 0 20px 60px var(--shadow);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--deep-blue);
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #E5E5E5;
+            border-radius: 12px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--tropical-pink);
+            box-shadow: 0 0 0 3px rgba(255, 107, 157, 0.1);
+        }
+
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .qty-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid var(--tropical-pink);
+            background: white;
+            color: var(--tropical-pink);
+            font-size: 1.5rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .qty-btn:hover {
+            background: var(--tropical-pink);
+            color: white;
+        }
+
+        .qty-display {
+            font-size: 2rem;
+            font-weight: 700;
+            min-width: 60px;
+            text-align: center;
+        }
+
+        .total-display {
+            background: linear-gradient(135deg, var(--tropical-pink), var(--tropical-orange));
+            color: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .total-display .total-label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        .total-display .total-amount {
+            font-size: 3rem;
+            font-weight: 800;
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .contact-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px var(--shadow);
+        }
+
+        .contact-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--deep-blue);
+        }
+
+        .contact-card a {
+            color: var(--tropical-pink);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--deep-blue);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-disclaimer {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1rem;
+            }
+
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .order-form {
+                padding: 2rem 1.5rem;
+            }
+        }
+
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="bg-animation">
+        <div class="floating-emoji">🌴</div>
+        <div class="floating-emoji">🥥</div>
+        <div class="floating-emoji">🌺</div>
+        <div class="floating-emoji">🦩</div>
+        <div class="floating-emoji">🍹</div>
+        <div class="floating-emoji">🍍</div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">NATURALLY PIPED UP</div>
+            <ul class="nav-links">
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#order">Order</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>🌴 TROPICAL MOBILE COCKTAIL PARADISE 🌴</h1>
+            <p class="subtitle">Premium Tequila Cocktails Delivered to Your Door</p>
+            <div class="price-highlight">$20 PER BOTTLE</div>
+            <div class="features">
+                <strong>6 SHOTS • MAXIMUM TROPICAL STRENGTH 🌀</strong>
+            </div>
+            <a href="#order" class="cta-button">🍹 Order Paradise Now!</a>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="container">
+        <h2 class="section-title">🍹 Our Tropical Menu</h2>
+        <div class="menu-grid">
+            <div class="drink-card">
+                <div class="drink-emoji">🥭</div>
+                <h3 class="drink-name">White Peach Mango</h3>
+                <p class="drink-spirit">Casa Migo Reposado</p>
+                <p class="drink-description">Casa Migo Reposado with tropical white peach and mango - smooth paradise!</p>
+                <div class="drink-price">$20</div>
+            </div>
+
+            <div class="drink-card">
+                <div class="drink-emoji">🫐</div>
+                <h3 class="drink-name">Blackberry Citrus</h3>
+                <p class="drink-spirit">Don Julio Reposado</p>
+                <p class="drink-description">Don Julio Reposado with fresh blackberry and zesty citrus kick</p>
+                <div class="drink-price">$20</div>
+            </div>
+
+            <div class="drink-card">
+                <div class="drink-emoji">🥝</div>
+                <h3 class="drink-name">Kiwi Bubble Gum Grape</h3>
+                <p class="drink-spirit">Don Julio Blanco</p>
+                <p class="drink-description">Don Julio Blanco with exotic kiwi, bubble gum sweetness, and grape burst</p>
+                <div class="drink-price">$20</div>
+            </div>
+
+            <div class="drink-card">
+                <div class="drink-emoji">🫐🍑</div>
+                <h3 class="drink-name">Blackberry Apricot</h3>
+                <p class="drink-spirit">Premium Tequila</p>
+                <p class="drink-description">Premium tequila with rich blackberry and sweet apricot fusion</p>
+                <div class="drink-price">$20</div>
+            </div>
+
+            <div class="drink-card">
+                <div class="drink-emoji">🌹🍈</div>
+                <h3 class="drink-name">Roseberry Pepino Melon</h3>
+                <p class="drink-spirit">Premium Tequila</p>
+                <p class="drink-description">Delicate rose berry blend with refreshing pepino melon - floral paradise!</p>
+                <div class="drink-price">$20</div>
+            </div>
+
+            <div class="drink-card">
+                <div class="drink-emoji">🍏</div>
+                <h3 class="drink-name">Green Sour Apple</h3>
+                <p class="drink-spirit">Premium Tequila</p>
+                <p class="drink-description">Crisp green apple with a tangy sour twist - refreshingly bold!</p>
+                <div class="drink-price">$20</div>
+            </div>
+
+            <div class="drink-card">
+                <div class="drink-emoji">🍒</div>
+                <h3 class="drink-name">Black Cherry</h3>
+                <p class="drink-spirit">Premium Tequila</p>
+                <p class="drink-description">Rich, dark cherry flavor with premium tequila - classic sophistication</p>
+                <div class="drink-price">$20</div>
+            </div>
+
+            <div class="drink-card">
+                <div class="drink-emoji">🟠</div>
+                <h3 class="drink-name">Papaya</h3>
+                <p class="drink-spirit">Premium Tequila</p>
+                <p class="drink-description">Tropical papaya sweetness meets premium spirits - pure island vibes!</p>
+                <div class="drink-price">$20</div>
+            </div>
+
+            <div class="drink-card">
+                <div class="drink-emoji">🟡🍐</div>
+                <h3 class="drink-name">Goldenberry Pear</h3>
+                <p class="drink-spirit">Premium Tequila</p>
+                <p class="drink-description">Exotic goldenberry paired with smooth pear - a golden tropical escape</p>
+                <div class="drink-price">$20</div>
+            </div>
+
+            <div class="drink-card">
+                <div class="drink-emoji">🩸🍊</div>
+                <h3 class="drink-name">Blood Orange</h3>
+                <p class="drink-spirit">Premium Tequila</p>
+                <p class="drink-description">Deep blood orange with premium tequila - bold and citrusy perfection</p>
+                <div class="drink-price">$20</div>
+            </div>
+
+            <div class="drink-card">
+                <div class="drink-emoji">🍑🍋</div>
+                <h3 class="drink-name">Eastern Peach Limeade</h3>
+                <p class="drink-spirit">Premium Tequila</p>
+                <p class="drink-description">Sweet eastern peach meets zesty lime - summer paradise in a bottle!</p>
+                <div class="drink-price">$20</div>
+            </div>
+
+            <div class="drink-card">
+                <div class="drink-emoji">🥥</div>
+                <h3 class="drink-name">Pina Colada</h3>
+                <p class="drink-spirit">Premium Tequila</p>
+                <p class="drink-description">Classic tropical blend of coconut and pineapple - pure island paradise!</p>
+                <div class="drink-price">$20</div>
+            </div>
+
+            <div class="drink-card">
+                <div class="drink-emoji">🍓🍍</div>
+                <h3 class="drink-name">Raspberry Pineapple</h3>
+                <p class="drink-spirit">Premium Tequila</p>
+                <p class="drink-description">Sweet raspberry meets tropical pineapple - perfect fruity fusion!</p>
+                <div class="drink-price">$20</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="container">
+        <h2 class="section-title">💰 Paradise Packages</h2>
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <div class="pricing-title">🍹 Paradise Single</div>
+                <div class="price">$20</div>
+                <p class="price-note">per bottle</p>
+                <ul class="feature-list">
+                    <li>6 shots premium liquor</li>
+                    <li>Tropical mixer paradise</li>
+                    <li>Delivered to your oasis</li>
+                </ul>
+            </div>
+
+            <div class="pricing-card featured">
+                <div class="pricing-title">🏝️ Island Party</div>
+                <div class="price">$18</div>
+                <p class="price-note">per bottle</p>
+                <ul class="feature-list">
+                    <li>5+ bottles of paradise</li>
+                    <li>Group vacation vibes</li>
+                    <li>Best value for crews</li>
+                </ul>
+            </div>
+
+            <div class="pricing-card">
+                <div class="pricing-title">🌺 VIP Resort</div>
+                <div class="price">$15</div>
+                <p class="price-note">per bottle</p>
+                <ul class="feature-list">
+                    <li>10+ bottles luxury</li>
+                    <li>Mobile bartender included</li>
+                    <li>Ultimate island experience</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Order Section -->
+    <section id="order" class="container">
+        <h2 class="section-title">🏖️ Book Your Paradise</h2>
+        <form class="order-form" id="orderForm">
+            <div class="form-group">
+                <label for="serviceType">Service Type *</label>
+                <select id="serviceType" name="serviceType" required>
+                    <option value="">Choose your service</option>
+                    <option value="delivery">🚗 Local Delivery (Wed-Sat until 3AM)</option>
+                    <option value="shipping">📦 Shipping (Monday-Sunday)</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="name">Name *</label>
+                <input type="text" id="name" name="name" required placeholder="Your name">
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone *</label>
+                <input type="tel" id="phone" name="phone" required placeholder="(XXX) XXX-XXXX">
+            </div>
+
+            <div class="form-group">
+                <label for="address">Address *</label>
+                <textarea id="address" name="address" rows="3" required placeholder="Your delivery address"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="drink">Drink Selection *</label>
+                <select id="drink" name="drink" required>
+                    <option value="">Choose your paradise</option>
+                    <option value="peach-mango">🥭 White Peach Mango (Casa Migo Reposado)</option>
+                    <option value="blackberry-citrus">🫐 Blackberry Citrus (Don Julio Reposado)</option>
+                    <option value="kiwi-bubblegum">🥝 Kiwi Bubble Gum Grape (Don Julio Blanco)</option>
+                    <option value="blackberry-apricot">🫐🍑 Blackberry Apricot</option>
+                    <option value="roseberry-melon">🌹🍈 Roseberry Pepino Melon</option>
+                    <option value="green-apple">🍏 Green Sour Apple</option>
+                    <option value="black-cherry">🍒 Black Cherry</option>
+                    <option value="papaya">🟠 Papaya</option>
+                    <option value="goldenberry-pear">🟡🍐 Goldenberry Pear</option>
+                    <option value="blood-orange">🩸🍊 Blood Orange</option>
+                    <option value="peach-limeade">🍑🍋 Eastern Peach Limeade</option>
+                    <option value="pina-colada">🥥 Pina Colada</option>
+                    <option value="raspberry-pineapple">🍓🍍 Raspberry Pineapple</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Quantity</label>
+                <div class="quantity-control">
+                    <button type="button" class="qty-btn" onclick="decreaseQty()">-</button>
+                    <div class="qty-display" id="quantity">1</div>
+                    <button type="button" class="qty-btn" onclick="increaseQty()">+</button>
+                </div>
+            </div>
+
+            <div class="total-display">
+                <div class="total-label">Total</div>
+                <div class="total-amount" id="totalAmount">$20</div>
+            </div>
+
+            <div class="form-group">
+                <label for="requests">Special Requests</label>
+                <textarea id="requests" name="requests" rows="3" placeholder="Any special requests or instructions?"></textarea>
+            </div>
+
+            <button type="submit" class="cta-button" style="width: 100%;">🌴 Order Paradise Now! 🌴</button>
+        </form>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="container">
+        <h2 class="section-title">☎️ Contact Paradise</h2>
+        <div class="contact-grid">
+            <div class="contact-card">
+                <div class="contact-icon">📞</div>
+                <h3>Call Us</h3>
+                <a href="tel:+18667811747">(866) 781-1747</a>
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-icon">📧</div>
+                <h3>Email Us</h3>
+                <a href="/cdn-cgi/l/email-protection#7d3c191014133d331c09080f1c1111040d140d1819080d531e1210"><span class="__cf_email__" data-cfemail="bffedbd2d6d1fff1decbcacdded3d3c6cfd6cfdadbcacf91dcd0d2">[email&#160;protected]</span></a>
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-icon">🌐</div>
+                <h3>Visit Our Website</h3>
+                <a href="https://www.naturallypipedup.com" target="_blank">www.NaturallyPipedUp.com</a>
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-icon">🚗</div>
+                <h3>Delivery Hours</h3>
+                <p>Wed-Sat Until 3AM</p>
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-icon">📦</div>
+                <h3>Shipping</h3>
+                <p>Monday-Sunday</p>
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-icon">🏖️</div>
+                <h3>Service Area</h3>
+                <p>Baltimore Metro & Surroundings</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <h2>🌴 NATURALLY PIPED UP 🌴</h2>
+            <p style="font-size: 1.2rem; margin: 1rem 0;">Maximum Island Vibes • Minimum Resort Prices • Maximum Fun</p>
+            <div class="footer-disclaimer">
+                <p>Please drink responsibly in paradise. Must be 21+ to sip tropical cocktails.</p>
+                <p style="margin-top: 1rem;">&copy; 2026 Naturally Piped Up. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        let quantity = 1;
+        const pricePerBottle = 20;
+
+        function updateTotal() {
+            const total = quantity * pricePerBottle;
+            document.getElementById('totalAmount').textContent = '$' + total;
+        }
+
+        function increaseQty() {
+            quantity++;
+            document.getElementById('quantity').textContent = quantity;
+            updateTotal();
+        }
+
+        function decreaseQty() {
+            if (quantity > 1) {
+                quantity--;
+                document.getElementById('quantity').textContent = quantity;
+                updateTotal();
+            }
+        }
+
+        // Form submission
+        document.getElementById('orderForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const data = {
+                serviceType: formData.get('serviceType'),
+                name: formData.get('name'),
+                phone: formData.get('phone'),
+                address: formData.get('address'),
+                drink: formData.get('drink'),
+                quantity: quantity,
+                total: quantity * pricePerBottle,
+                requests: formData.get('requests')
+            };
+
+            // Create mailto link with order details
+            const subject = encodeURIComponent('New Order - Naturally Piped Up');
+            const body = encodeURIComponent(`
+New Order Details:
+
+Service Type: ${data.serviceType}
+Name: ${data.name}
+Phone: ${data.phone}
+Address: ${data.address}
+Drink: ${data.drink}
+Quantity: ${data.quantity} bottles
+Total: $${data.total}
+Special Requests: ${data.requests || 'None'}
+
+Thank you for your order!
+            `);
+
+            window.location.href = `mailto:Admin@Naturallypipedup.com?subject=${subject}&body=${body}`;
+            
+            alert('🌴 Thank you for your order! Your email client will open to send your order details. We\'ll contact you shortly to confirm!');
+        });
+
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
